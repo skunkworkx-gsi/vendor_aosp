@@ -1,6 +1,6 @@
 # inital install
 
-mkdir android
+mkdir android (or whatever name you want your root dir to be)
 
 git clone https://github.com/skunkworkx-gsi/vendor_aosp.git -b q vendor/aosp
 
