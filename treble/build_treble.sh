@@ -28,7 +28,7 @@ else
         (mkdir -p .repo/local_manifests; cd .repo/local_manifests; cp ../../vendor/aosp/treble/manifests/* $(pwd); cd ../../)
 fi
 
-#repo sync -c -j$jobs --no-tags --no-clone-bundle --force-sync
+repo sync -c -j$jobs --no-tags --no-clone-bundle --force-sync
 
 repo forall -r '.*opengapps.*' -c 'git lfs fetch && git lfs checkout'
 (cd device/phh/treble; git clean -fdx; bash generate.sh)
@@ -36,11 +36,9 @@ repo forall -r '.*opengapps.*' -c 'git lfs fetch && git lfs checkout'
 rm -f vendor/gapps/interfaces/wifi_ext/Android.bp
 
 #if [[ $patch == "y" ]];then
-#echo "Let the patching begin"
-#bash "vendor/aosp/treble/autopatch_treble.sh" $rompath/vendor/aosp/treble/patches
+echo "Let the patching begin"
+bash "vendor/aosp/treble/autopatch_treble.sh" $rompath/vendor/aosp/treble/patches
 #fi
-
-find -name \*.bp -exec sed -i -e '/java_api_finder/d' '{}' \;
 
 . build/envsetup.sh
 
@@ -52,15 +50,4 @@ buildVariant() {
 	xz -c $OUT/system.img -T0 > release/$rom_fp/system-${2}.img.xz
 }
 
-#repo manifest -r > release/$rom_fp/manifest.xml
-#bash "$originFolder"/list-patches.sh
-#cp patches.zip release/$rom_fp/patches.zip
-
-#	buildVariant treble_arm64_avS-userdebug quack-arm64-aonly-vanilla
-#	buildVariant treble_arm64_agS-userdebug quack-arm64-aonly-gapps
-#	buildVariant treble_arm64_bvS-userdebug quack-arm64-ab-vanilla
 	buildVariant treble_arm64_bgS-userdebug quack-arm64-ab-gapps
-#	buildVariant treble_arm_avS-userdebug quack-arm-aonly-vanilla
-#	buildVariant treble_arm_agS-userdebug quack-arm-aonly-gapps
-#	buildVariant treble_arm_bvS-userdebug quack-arm-ab-vanilla
-#	buildVariant treble_arm_bgS-userdebug quack-arm-ab-gapps
