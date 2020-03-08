@@ -33,4 +33,4 @@ bash first_install.sh
 
 cd ../../../
 
-bash build_treble.sh
+bash build_treble.sh -s (-s to sync and patch the rom)
