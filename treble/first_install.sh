@@ -1,10 +1,5 @@
 #!/bin/bash
 
-rom_fp="$(date +%y%m%d)"
-originFolder="$(dirname "$0")"
-mkdir -p release/$rom_fp/
-set -e
-
 if [ -z "$USER" ];then
 	export USER="$(id -un)"
 fi
