@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-<remote name="aclegg2011" fetch="https://github.com/aclegg2011/" />
+<remote name="skunk" fetch="https://github.com/skunkworkx-gsi/" />
 
-<project path="vendor/hardware_overlay" name="vendor_hardware_overlay" remote="aclegg2011" revision="pie" />
-<project path="device/phh/treble" name="device_phh_treble" remote="aclegg2011" revision="android-10.0" />
-<project path="vendor/vndk" name="vendor_vndk" remote="aclegg2011" revision="android-10.0" />
-<project path="vendor/vndk-tests" name="vendor_vndk-tests" remote="aclegg2011" revision="master" />
-<project path="vendor/gapps-go" name="gapps-go" remote="aclegg2011" revision="master" />
-<project path="vendor/interfaces" name="vendor_interfaces" remote="aclegg2011" revision="pie" />
-<project path="vendor/magisk" name="vendor_magisk" remote="aclegg2011" revision="android-10.0" />
+<project path="vendor/hardware_overlay" name="vendor_hardware_overlay" remote="skunk" revision="pie" />
+<project path="device/phh/treble" name="device_phh_treble" remote="skunk" revision="android-10.0" />
+<project path="vendor/vndk" name="vendor_vndk" remote="skunk" revision="android-10.0" />
+<project path="vendor/vndk-tests" name="vendor_vndk-tests" remote="skunk" revision="master" />
+<project path="vendor/gapps-go" name="gapps-go" remote="skunk" revision="master" />
+<project path="vendor/interfaces" name="vendor_interfaces" remote="skunk" revision="pie" />
+<project path="vendor/magisk" name="vendor_magisk" remote="skunk" revision="android-10.0" />
 
 <!-- exfat support -->
 <remote name="relan" fetch="https://github.com/relan/" />
