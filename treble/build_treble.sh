@@ -183,7 +183,7 @@ echo "Continuing..."
 
 
 # If statement for $sync
-if  [  $sync == "y" ];then
+if  [  "$sync" == "y" ];then
     repo init -u "$manifest_url" -b $aosp
     repo sync -c -j$jobs --no-tags --no-clone-bundle --force-sync
     repo forall -r '.*opengapps.*' -c 'git lfs fetch && git lfs checkout'
@@ -195,17 +195,19 @@ if  [  $sync == "y" ];then
 fi
 
 # If statment for $patch
-if [ $patch == "y" ] ;then
+if [ "$patch" == "y" ] ;then
     echo "Let the patching begin"
     bash "vendor/aosp/treble/autopatch_treble.sh" $rompath/vendor/aosp/treble/patches
     patchOption="p"
 fi
 
 # If statment for $clean
-if [ $clean == "y" ];then
+if [ "$clean" == "y" ];then
     make -j$jobs clean
     cleanOption="c"
 fi
+
+find -name \*.bp -exec sed -i -e '/java_api_finder/d' '{}' \;
 
 if [[ "$1" = "arm64_a_stock" || "$1" = "arm64_a_gapps" || "$1" = "arm64_a_foss" || "$1" = "arm64_a_go" || "$1" = "arm64_ab_stock" || "$1" = "arm64_ab_gapps" || "$1" = "arm64_ab_foss" || "$1" = "arm64_ab_go" ]];then
 echo "Setting up build env for $1"
